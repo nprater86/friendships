@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.content {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 25px;
+    gap: 25px;
+}
+
+.leftColumn{
+    flex: 2;
+}
+
+table {
+    border: 2px solid black;
+}
+
+tr, th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.rightColumn{
+    flex: 2;
+}
+
+.addUser{
+    border: 2px solid black;
+    padding: 25px;
+}
+
+.addUser h1{
+    align-self: flex-start;
+}
+
+.addUser form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.addUser button {
+    align-self: center;
+}
+
+.nameWrap {
+    display: flex;
+    justify-content: space-between;
+}
