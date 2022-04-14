@@ -29,13 +29,21 @@ class User:
     def get_all_users_with_friends(cls):
         query = 'SELECT * FROM users JOIN friends ON friends.user_id = users.id LEFT JOIN users AS users2 ON users2.id = friends.friend_id ORDER BY users.id, users2.first_name;'
         results = connectToMySQL('friendships_schema').query_db(query)
+
+        #create empty list to hold all users
         users = []
-        tempId = ''
+
+        #populate list with first user
+        new_user = cls( results[0] )
+        users.append(new_user)
+
+        #now need to go through all rows in results and append to friends list
         for row in results:
-            if row["id"] != tempId:
+
+            #make sure we are adding friends to the last user if the id is the same. otherwise create a new user and append, then append to that user
+            if row["id"] != users[-1].id:
                 new_user = cls( row )
                 users.append(new_user)
-                tempId = new_user.id
 
             friend_data = {
                 "id": row['users2.id'],
